@@ -14,6 +14,7 @@ Also you can get the cardinal point where the device is pointing or in which car
 - In your viewDidLoad initialize the CLLocationManager
 
 - In the updateLocation delegate get the bearing degrees (NSNumber *bearingDegrees) calling 
+<<<<<<< HEAD
 		+(NSNumber *) bearingBetweenStartLocation:(CLLocation *)startLocation andEndLocation:(CLLocation *)endLocation;
 
 - In order to apply the image transformation to your "compassimage", in didUpdateHeading delegate you need to do
@@ -21,10 +22,23 @@ Also you can get the cardinal point where the device is pointing or in which car
 
 - In order to get the cardinal point from bearing, in your didUpdateHeading delegate you need to call
 		+(NSString *)getCardinalDirectionFromHeading:(float)heading;
+=======
+		<code>+(NSNumber *) bearingBetweenStartLocation:(CLLocation *)startLocation andEndLocation:(CLLocation *)endLocation;
+
+- In order to apply the image transformation to your "compassimage", in didUpdateHeading delegate you need to do
+		<code>_imgCompass.transform = CGAffineTransformMakeRotation(([bearingDegrees intValue] - newHeading.magneticHeading) * M_PI / 180);
+
+- In order to get the cardinal point from bearing, in your didUpdateHeading delegate you need to call
+		<code>+(NSString *)getCardinalDirectionFromHeading:(float)heading;
+>>>>>>> f00ad307164af7eb3d714da36bb5f0f7ee1d8ef6
 
 
 For more info, read the source and the demo project.
 
 ## License
 
+<<<<<<< HEAD
 CLHeading+Bearing is licensed under the MIT-License
+=======
+CLHeading+Bearing is licensed under the MIT-License
+>>>>>>> f00ad307164af7eb3d714da36bb5f0f7ee1d8ef6
