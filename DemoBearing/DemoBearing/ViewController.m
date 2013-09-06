@@ -29,21 +29,24 @@
     [locationManager startUpdatingHeading];
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
-    CLLocation *aLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(44.42532,8.847627)
+    CLLocation *aLocation = [[CLLocation alloc] initWithCoordinate:CLLocationCoordinate2DMake(44.404814,8.945826)
                                                           altitude:0
                                                 horizontalAccuracy:0
                                                   verticalAccuracy:0
                                                          timestamp:[NSDate date]];
     
-    bearingDegrees = [Bearing bearingBetweenStartLocation:newLocation andEndLocation:aLocation];
+    bearingDegrees = [Bearing bearingBetweenStartLocation:[locations lastObject] andEndLocation:aLocation];
     
 }
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+   
     NSLog(@"Device is pointing %@",[Bearing getCardinalDirectionFromHeading:newHeading.magneticHeading]);
+    NSLog(@"Arrow is pointing %@",[Bearing getCardinalDirectionFromHeading:[bearingDegrees intValue]]);
+
     _imgCompass.transform = CGAffineTransformMakeRotation(([bearingDegrees intValue] - newHeading.magneticHeading) * M_PI / 180);
 }
 

@@ -22,8 +22,6 @@ double RadiansToDegrees(double radians) {return radians * 180.0/M_PI;};
     float endLocationLat = endLocation.coordinate.latitude;
     float endLocationLon = endLocation.coordinate.longitude;
     
-    NSLog(@"%f ; %f", startLocationLat, startLocationLon);
-    
     float lat1 = DegreesToRadians(startLocationLat);
     float lng1 = DegreesToRadians(startLocationLon);
     float lat2 = DegreesToRadians(endLocationLat);
@@ -35,31 +33,30 @@ double RadiansToDegrees(double radians) {return radians * 180.0/M_PI;};
     float bearingDegrees = RadiansToDegrees(bearing);
     bearingDegrees = (int)bearingDegrees % 360;
     
-    NSLog(@"%d", (int)bearingDegrees);
+    //NSLog(@"%d", (int)bearingDegrees);
     return [NSNumber numberWithInt:bearingDegrees];
 }
 
-+(NSString *)getCardinalDirectionFromHeading:(float)mHeading{
-//    float mHeading = heading.magneticHeading; //It's only to make the code easier to read
++(NSString *)getCardinalDirectionFromHeading:(float)heading{
     
-    if ((mHeading > 338) || (mHeading <= 22))
+    if ((heading > 338) || (heading <= 22))
         return @"N";
-    else if ((mHeading > 22) && (mHeading <= 68))
+    else if ((heading > 22) && (heading <= 68))
         return @"NE";
-    else if ((mHeading > 68) && (mHeading <= 113))
+    else if ((heading > 68) && (heading <= 113))
         return @"E";
-    else if ((mHeading > 113) && (mHeading <= 158))
+    else if ((heading > 113) && (heading <= 158))
         return @"SE";
-    else if ((mHeading > 158) && (mHeading <= 203))
+    else if ((heading > 158) && (heading <= 203))
         return @"S";
-    else if ((mHeading > 203) && (mHeading <= 248))
+    else if ((heading > 203) && (heading <= 248))
         return @"SW";
-    else if ((mHeading > 248) && (mHeading <= 293))
+    else if ((heading > 248) && (heading <= 293))
         return @"W";
-    else if ((mHeading > 293) && (mHeading <= 338))
+    else if ((heading > 293) && (heading <= 338))
         return @"NW";
     else{
-        NSLog (@"%f",mHeading);
+        NSLog (@"%f",heading);
         return @"Unknown";
     }
 }

@@ -12,6 +12,6 @@
 @interface Bearing : NSObject
 +(NSNumber *) bearingBetweenStartLocation:(CLLocation *)startLocation andEndLocation:(CLLocation *)endLocation;
 
-+(NSString *)getCardinalDirectionFromHeading:(float)mHeading;
++(NSString *)getCardinalDirectionFromHeading:(float)heading;
 
 @end
